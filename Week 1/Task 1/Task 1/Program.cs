@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task1
+namespace Task_1
 {
     class Program
     {
@@ -38,7 +38,6 @@ namespace Task1
                 Console.Write(k + " ");// show every prime number with "(space)" after it
             }
             Console.ReadKey(); //obtains the next character or function key pressed by the user
-
         }
     }
 }
