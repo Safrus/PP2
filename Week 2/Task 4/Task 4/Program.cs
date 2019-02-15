@@ -12,7 +12,7 @@ namespace Task_4
         public static string FolderName = "C:\\ds\\";// create a folder ds
         public static string fileName = "FileToCopy.txt";// create a new file
 
-   
+
         public static void Copy(string source, string dest)
         {
             File.Copy(source, dest, true); //copying the file from one directory to another directory
@@ -20,7 +20,7 @@ namespace Task_4
 
         }
 
-        
+
         public static void Delete(string source)
         {
             File.Delete(source); //deleting the file from the source directory
@@ -36,27 +36,10 @@ namespace Task_4
             path = Path.Combine(path, fileName); // creating the way to the file in directory 1
             path1 = Path.Combine(path1, fileName); // creating the way to the file in directory 2
 
-            FileInfo fi = new FileInfo(path); // getting a file info in order to check whether the file exists or not
+            
+            Copy(path, path1); // call the function which then will call the function Delete()
 
-            //if the file does not exist the following condition holds
-            if (!fi.Exists)
-            {
-                // creating a file and writing a text to it
-                // using StreamWriter
-                using (StreamWriter sw = new StreamWriter(path))
-                {
-                    sw.WriteLine("Hello World!");
-                }
-            }
-
-            else
-            {
-                Console.WriteLine("File already exists!");
-
-            }
-              Copy(path, path1); // call the function which then will call the function Delete()
-
-              Console.ReadKey();
+            Console.ReadKey();
         }
     }
 }
