@@ -35,11 +35,30 @@ namespace Task_4
             Directory.CreateDirectory(path1); // creating a directory 2 called "path1"
             path = Path.Combine(path, fileName); // creating the way to the file in directory 1
             path1 = Path.Combine(path1, fileName); // creating the way to the file in directory 2
+            FileInfo fi = new FileInfo(path); // Getting a file info in order to check whether the file exists or not
 
-            
+            //if the file does not exist the following condition holds
+            if (!fi.Exists)
+            {
+                //creating a file and writing a text to it
+                //using StreamWriter
+                using (StreamWriter sw = new StreamWriter(path))
+                {
+                    sw.WriteLine("Hello World!");
+                }
+            }
+
+            //if the file already exists the following condition holds
+            else
+            {
+                Console.WriteLine("File already exists!");
+
+            }
+
+
             Copy(path, path1); // call the function which then will call the function Delete()
 
-            Console.ReadKey();
+            Console.ReadKey();//obtains the next character or function key pressed by the user
         }
     }
 }
