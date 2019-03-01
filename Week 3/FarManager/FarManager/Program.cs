@@ -24,16 +24,32 @@ namespace FarManager
         }
         public void Show()// this function helps us to show all the files and directories with enumeration
         {
+            int cnt = 0;
+            int cnt1 = 0;
             Console.BackgroundColor = ConsoleColor.DarkCyan;// set Background color to DarkCyan
             Console.Clear();// clear the console
             DirectoryInfo directory = new DirectoryInfo(path);// creating DirectoryInfo with path which is in main function
             FileSystemInfo[] fs = directory.GetFileSystemInfos();// get all files and directories from directory
-            for(int i=0,k=0;i<sz;i++)// here k is for indicating index in Color function
+            for (int i = 0, k = 0; i < sz; i++)// here k is for indicating index in Color function
             {
-                Color(fs[i],k);// trigger the Color function
-                Console.WriteLine(i+1+"." + "  " + fs[i].Name);
+                Color(fs[i], k);// trigger the Color function
+                Console.WriteLine(i + 1 + "." + "  " + fs[i].Name);
                 k++;// add 1 to k
             }
+            Console.WriteLine();
+            foreach (FileSystemInfo z in fs)
+            {
+                if(z.GetType()==typeof(DirectoryInfo))
+                {
+                    cnt++;
+                }
+                else
+                {
+                    cnt1++;
+                }
+            }
+            Console.WriteLine("Amount of directories:"+cnt);
+            Console.WriteLine("Amount of files:" + cnt1);
         }
         public void NewDir()// this function helps us to measure the Length of directory which we have opened or exit
         {
